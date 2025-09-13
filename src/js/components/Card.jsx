@@ -2,24 +2,23 @@ import React from "react";
 
 const CardItem = ({ image, title, text, link }) => {
   return (
-    <div className="card" style={{ width: "300px" }}>
-        <img 
-        src={image} className="card-img-top fixed-img" 
+    <div className="card h-100">
+      <img 
+        src={image} 
+        className="card-img-top" 
         alt={title} 
-        style={{ width: '298px', height: '325px', objectFit: 'cover' }}
-        />
-        <div className="card-body d-flex flex-column align-content-center flex-wrap ">
-            <h5 className="card-title">{title}</h5>
-            <p className="card-text">{text}</p> 
-        </div>
-        <div class="card-footer d-flex justify-content-center">
-            <a href={link} className="btn btn-primary">Find Out More!</a>
-        </div>
+        style={{ height: '250px', objectFit: 'cover' }} 
+      />
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text flex-grow-1">{text}</p>
+      </div>
+      <div className="card-footer text-center">
+        <a href={link} className="btn btn-primary">Find Out More!</a>
+      </div>
     </div>
   );
 };
-/*
-*/
 
 const Card = () => {
   const cardData = [
@@ -50,16 +49,17 @@ const Card = () => {
   ];
 
   return (
-    <div className="container">
-      <div className="d-flex flex-wrap justify-content-between">
+    <div className="container my-4">
+      <div className="row g-4">
         {cardData.map((item, index) => (
-          <CardItem
-            key={index}
-            image={item.image}
-            title={item.title}
-            text={item.text}
-            link={item.link}
-          />
+          <div className="col-12 col-sm-6 col-lg-3 g-4" key={index}>
+            <CardItem
+              image={item.image}
+              title={item.title}
+              text={item.text}
+              link={item.link}
+            />
+          </div>
         ))}
       </div>
     </div>
